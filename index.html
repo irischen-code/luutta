@@ -1,0 +1,2237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>陈含湘 Iris Chen — 产品经理</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #FDFAFB;
+      --card-bg: #FFFFFF;
+      --text: #2D2A32;
+      --text-muted: #9090A0;
+      --accent: #E88A9F;
+      --accent-light: rgba(232, 138, 159, 0.08);
+      --accent-dark: #D4708A;
+      --border: rgba(232, 138, 159, 0.15);
+      --shadow: 0 2px 12px rgba(180, 100, 120, 0.06);
+      --shadow-hover: 0 8px 32px rgba(180, 100, 120, 0.1);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --max-w: 960px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ── NAV — Liquid Glass Capsule ─────────────── */
+    nav {
+      position: fixed;
+      top: 20px;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .nav-capsule {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 6px;
+      border-radius: 50px;
+      pointer-events: all;
+
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+      border: 1px solid rgba(176, 132, 204, 0.12);
+
+      box-shadow:
+        0 4px 24px rgba(100, 80, 140, 0.08),
+        0 1px 4px rgba(100, 80, 140, 0.04);
+    }
+
+    .nav-logo {
+      position: relative;
+      z-index: 2;
+      font-weight: 700;
+      font-size: 0.875rem;
+      color: var(--text);
+      padding: 8px 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-sep {
+      position: relative;
+      z-index: 2;
+      width: 1px;
+      height: 18px;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.0) 0%,
+        rgba(0, 0, 0, 0.08) 50%,
+        rgba(255, 255, 255, 0.0) 100%
+      );
+      flex-shrink: 0;
+    }
+
+    nav .nav-links {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      list-style: none;
+    }
+
+    nav .nav-links a {
+      position: relative;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #6B6B80;
+      padding: 7px 14px;
+      border-radius: 50px;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    nav .nav-links a:hover {
+      color: var(--accent);
+      background: rgba(176, 132, 204, 0.08);
+    }
+
+    nav .nav-links a.active {
+      color: #fff;
+      background: var(--accent);
+      box-shadow: 0 2px 12px rgba(176, 132, 204, 0.3);
+    }
+
+    /* ── SECTIONS ─────────────────────────────────── */
+    section {
+      padding: 80px 24px;
+      position: relative;
+    }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: var(--text);
+      text-align: center;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      letter-spacing: -0.02em;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, #E88A9F, #F5B0C0);
+      border-radius: 3px;
+    }
+
+    /* ── HERO ────────────────────────────────────── */
+    #home {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 100px;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    #home::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(ellipse at 15% 20%, rgba(232, 138, 159, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 85% 80%, rgba(245, 176, 192, 0.12) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    #home .hero-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 48px 80px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 60px;
+      align-items: center;
+    }
+
+    #home .hero-text {
+      min-width: 0;
+    }
+
+    #home .hero-greeting {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    #home .hero-name {
+      font-size: 3.75rem;
+      font-weight: 700;
+      line-height: 1.05;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #E88A9F 0%, #F5B0C0 40%, #E88A9F 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.03em;
+    }
+
+    #home .hero-title {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-bottom: 20px;
+      letter-spacing: 0.3px;
+    }
+
+    #home .hero-divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #E88A9F, #F5B0C0);
+      border-radius: 3px;
+      margin-bottom: 20px;
+    }
+
+    #home .hero-bio {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.85;
+      margin-bottom: 36px;
+      max-width: 520px;
+    }
+
+    #home .hero-bio .accent {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    #home .hero-socials {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    #home .hero-socials a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    #home .hero-socials a:hover {
+      color: #fff;
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(232, 138, 159, 0.35);
+    }
+
+    #home .hero-socials a svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    #home .hero-avatar-wrap {
+      position: relative;
+      width: 280px;
+      height: 280px;
+      flex-shrink: 0;
+    }
+
+    #home .hero-avatar {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      object-fit: cover;
+      position: relative;
+      z-index: 2;
+      border: 4px solid #fff;
+      box-shadow: 0 8px 40px rgba(180, 100, 120, 0.15);
+    }
+
+    #home .hero-avatar-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #E88A9F 0%, #F5B0C0 50%, #E88A9F 100%);
+      z-index: 1;
+      opacity: 0.35;
+    }
+
+    #home .hero-avatar-wrap::after {
+      content: '';
+      position: absolute;
+      inset: -24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(232,138,159,0.18), rgba(245,176,192,0.1));
+      z-index: 0;
+      filter: blur(12px);
+    }
+
+    /* ── EXPERIENCE / EDUCATION / EXTRACURRICULAR ─── */
+    .bg-section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 32px;
+      color: var(--text);
+      text-align: center;
+      letter-spacing: -0.02em;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .bg-section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, #E88A9F, #F5B0C0);
+      border-radius: 3px;
+    }
+
+    /* Tab Navigation */
+    .bg-tabs {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 40px;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 4px;
+      width: fit-content;
+    }
+
+    .bg-tab {
+      padding: 8px 22px;
+      border-radius: 50px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      transition: all 0.25s ease;
+      font-family: 'Outfit', sans-serif;
+      white-space: nowrap;
+    }
+
+    .bg-tab:hover {
+      color: var(--text);
+      background: rgba(0,0,0,0.04);
+    }
+
+    .bg-tab.active {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 2px 12px rgba(232, 138, 159, 0.3);
+    }
+
+    /* Tab Panels */
+    .bg-tab-panel {
+      display: none;
+    }
+
+    .bg-tab-panel.active {
+      display: block;
+    }
+
+    /* Timeline Grid */
+    .bg-grid {
+      position: relative;
+    }
+
+    .bg-grid::before {
+      content: '';
+      position: absolute;
+      left: 25px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent) 0%, rgba(176,132,204,0.15) 100%);
+      border-radius: 2px;
+    }
+
+    .bg-card {
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      padding: 0 0 36px 0;
+      margin-left: 60px;
+      position: relative;
+    }
+
+    .bg-card:last-child {
+      padding-bottom: 0;
+    }
+
+    .bg-card::before {
+      content: '';
+      position: absolute;
+      left: -41px;
+      top: 28px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      border: 2.5px solid var(--accent);
+      box-shadow: 0 0 0 3px rgba(176,132,204,0.18);
+    }
+
+    .bg-card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .bg-card-logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 10px;
+      object-fit: contain;
+      flex-shrink: 0;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 3px;
+    }
+
+    .trophy-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(232, 138, 159, 0.08);
+      border-color: rgba(232, 138, 159, 0.2);
+    }
+
+    .trophy-logo svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    .bg-card-logo-initials {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      object-fit: contain;
+      flex-shrink: 0;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .bg-card-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .bg-card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+
+    .bg-card-subtitle {
+      font-size: 0.875rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .bg-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .bg-card-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .prize-item {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .bg-card-meta-item svg {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+      color: var(--accent);
+    }
+
+    .bg-card-desc {
+      padding-left: 64px;
+    }
+
+    .bg-card-desc p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 10px;
+    }
+
+    .bg-card-desc ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .bg-card-desc li {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .bg-card-desc li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .bg-card-desc a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .bg-card-desc a:hover {
+      color: var(--accent-dark);
+    }
+
+    /* Honors title */
+    .bg-honors-title {
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 24px;
+      margin-top: 12px;
+    }
+
+    /* ── PROJECT (Self-media) ─────────────────────── */
+    .project-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+
+    .project-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-card:hover {
+      transform: none;
+    }
+
+    .pc-image-wrapper {
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .pc-image-wrapper:hover .pc-image {
+      filter: blur(5px);
+    }
+
+    .pc-image-wrapper:hover .pc-overlay {
+      opacity: 1;
+    }
+
+    .pc-image {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: filter 0.4s ease;
+      display: block;
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+
+    .pc-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+    }
+
+    .pc-overlay-btn {
+      background: var(--accent);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 28px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      box-shadow: 0 4px 20px rgba(232, 131, 154, 0.4);
+    }
+
+    .project-card .pc-body {
+      min-width: 0;
+    }
+
+    .project-card .pc-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 6px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .project-card .pc-name {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .pc-name-bilibili {
+      color: #21AEE4 !important;
+    }
+
+    .pc-name-meituan {
+      color: #FFD100 !important;
+    }
+
+    .pc-name-poizon {
+      color: #03DADC !important;
+    }
+
+    .pc-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+      align-items: center;
+    }
+
+    .pc-tags .pc-expand-btn {
+      margin-left: auto;
+    }
+
+    .pc-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: rgba(232, 138, 159, 0.08);
+      color: var(--accent);
+      border: 1px solid rgba(232, 138, 159, 0.2);
+    }
+
+    /* ── PROJECTS SIDEBAR ─────────────────────────────── */
+    .pro-sidebar {
+      position: fixed;
+      left: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 50;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+
+    .pro-sidebar.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .pro-sidebar-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      padding: 6px;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: var(--shadow);
+    }
+
+    .pro-sidebar-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .pro-sidebar-btn:hover {
+      transform: scale(1.1);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--accent);
+    }
+
+    .pro-sidebar-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: scale(1.1);
+      box-shadow: 0 4px 20px rgba(232, 138, 159, 0.35);
+    }
+
+    @media (max-width: 1200px) {
+      .pro-sidebar {
+        display: none;
+      }
+    }
+
+    .pc-expand-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .pc-expand-btn:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(232, 138, 159, 0.05);
+    }
+
+    .pc-expand-btn svg {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.3s ease;
+    }
+
+    .pc-expand-btn.active svg {
+      transform: rotate(180deg);
+    }
+
+    .pc-achievement {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  opacity 0.3s ease;
+    }
+
+    .pc-achievement.show {
+      max-height: 1200px;
+      opacity: 1;
+    }
+
+    .achievement-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 48px;
+      box-shadow: var(--shadow);
+    }
+
+    .achievement-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .achievement-item {
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      position: relative;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 140px;
+    }
+
+    .achievement-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+    .achievement-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(232, 138, 159, 0.15), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .achievement-item:hover img {
+      transform: scale(1.05);
+      filter: brightness(1.05) drop-shadow(0 4px 12px rgba(232, 138, 159, 0.3));
+    }
+
+    .achievement-item:hover::after {
+      opacity: 1;
+    }
+
+    .pc-platforms {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .pc-reach {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .pc-reach-highlight {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .project-card .pc-desc {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    /* ── SKILLS ───────────────────────────────────── */
+    .skills-group {
+      margin-bottom: 28px;
+    }
+
+    .skills-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .skills-group-label {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skills-logo-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      transition: all 0.2s;
+      overflow: hidden;
+    }
+
+    .skill-logo:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1.5px var(--accent), 0 0 16px rgba(232, 138, 159, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .skill-logo img,
+    .skill-logo svg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .skill-tag {
+      font-size: 0.875rem;
+      padding: 6px 16px;
+      background: rgba(232, 138, 159, 0.06);
+      border: 1px solid rgba(232, 138, 159, 0.15);
+      border-radius: 20px;
+      color: var(--text);
+      font-weight: 500;
+      box-shadow: none;
+      transition: all 0.3s ease;
+    }
+
+    .skill-tag:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(232, 138, 159, 0.08);
+      box-shadow: 0 0 15px rgba(232, 138, 159, 0.12);
+      transform: translateY(-2px);
+    }
+
+    /* ── CONTACT ───────────────────────────────────── */
+    #contact {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      position: relative;
+    }
+
+    #contact .contact-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 40px;
+      box-shadow: var(--shadow);
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-card .contact-emails {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+
+    #contact .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 32px;
+      color: var(--text);
+      text-align: center;
+      letter-spacing: -0.02em;
+    }
+
+    #contact .contact-sub {
+      color: var(--text-muted);
+      font-size: 0.9375rem;
+      margin-bottom: 8px;
+    }
+
+    #contact .contact-email {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+      transition: all 0.3s ease;
+    }
+
+    #contact .contact-email svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    #contact .contact-email:hover {
+      color: var(--accent-dark);
+    }
+
+    #contact .contact-socials {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    #contact .contact-socials a {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+
+    #contact .contact-socials a:hover {
+      color: #fff;
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(232, 138, 159, 0.25);
+    }
+
+    #contact .contact-socials a svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* ── BACK TO TOP ───────────────────────────────── */
+    .back-to-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 80px;
+      height: 80px;
+      border: none;
+      background: transparent;
+      cursor: grab;
+      z-index: 100;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+      padding: 0;
+    }
+
+    .back-to-top:active {
+      cursor: grabbing;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: scale(1.05);
+    }
+
+    .back-to-top img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    /* ── FOOTER ────────────────────────────────────── */
+    footer {
+      padding: 24px;
+      text-align: center;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── ANIMATIONS ───────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-up.visible .section-title::after {
+      animation: lineGlow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes lineGlow {
+      0% { box-shadow: 0 0 10px rgba(232, 138, 159, 0.4); opacity: 0.6; }
+      100% { box-shadow: 0 0 20px rgba(232, 138, 159, 0.6); opacity: 1; }
+    }
+
+    /* ── RESPONSIVE ────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav {
+        top: 14px;
+      }
+
+      .nav-capsule {
+        gap: 0;
+        padding: 4px 4px;
+      }
+
+      nav .nav-links {
+        gap: 0;
+      }
+
+      nav .nav-links a {
+        font-size: 0.75rem;
+        padding: 6px 10px;
+      }
+
+      .nav-logo {
+        font-size: 0.8rem;
+        padding: 8px 10px;
+      }
+
+      .nav-sep {
+        height: 16px;
+      }
+
+      #home .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 80px 24px 100px;
+        gap: 40px;
+      }
+
+      #home .hero-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #home .hero-divider {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      #home .hero-bio {
+        max-width: 100%;
+      }
+
+      #home .hero-socials {
+        justify-content: center;
+      }
+
+      #home .hero-name {
+        font-size: 2.75rem;
+      }
+
+      #home .hero-avatar-wrap {
+        width: 200px;
+        height: 200px;
+      }
+
+      #home .hero-avatar {
+        width: 200px;
+        height: 200px;
+      }
+
+      section {
+        padding: 60px 20px;
+      }
+
+      .bg-grid::before {
+        left: 17px;
+      }
+
+      .bg-card {
+        margin-left: 48px;
+        padding-bottom: 28px;
+      }
+
+      .bg-card::before {
+        left: -37px;
+      }
+
+      .bg-card-top {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .bg-card-logo,
+      .bg-card-logo-initials {
+        width: 42px;
+        height: 42px;
+      }
+
+      .bg-card-desc {
+        padding-left: 0;
+      }
+
+      .bg-honors-group {
+        padding-left: 0;
+      }
+
+      .bg-honors-title {
+        margin-left: 0;
+      }
+
+      .bg-tabs {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .project-card .pc-header {
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .project-card {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .pc-image-wrapper {
+        padding: 0.25rem;
+      }
+
+      .pc-image-wrapper::before,
+      .pc-image-wrapper::after {
+        display: none;
+      }
+
+      .pc-image {
+        transform: none;
+        left: 0;
+        top: 0;
+        height: 200px;
+      }
+
+      .pc-image-wrapper:hover .pc-image {
+        transform: none;
+      }
+
+      .pc-image-wrapper:hover .pc-overlay {
+        opacity: 1;
+      }
+
+      .project-card .pc-name {
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav .nav-links {
+        gap: 14px;
+      }
+
+      nav .nav-links a {
+        font-size: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-capsule">
+      <span class="nav-logo">Iris Chen</span>
+      <div class="nav-sep"></div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#exp">Experience</a></li>
+        <li><a href="#pro">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1 class="hero-name">Iris Chen</h1>
+        <p class="hero-title">Product Manager</p>
+        <div class="hero-divider"></div>
+        <p class="hero-bio">
+          I'm a Chinese Product Manager intern with experience at leading platforms like Meituan and Poizon. My background in product operations and content creation—managing accounts across Douyin, Red, and Bilibili with <strong class="accent">30,000+</strong> followers—has fueled my passion for driving user growth.
+        </p>
+        <div class="hero-socials">
+          <!-- Bilibili -->
+          <a href="https://space.bilibili.com/1942011" target="_blank" rel="noopener" title="哔哩哔哩">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.83.83 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .701.124.98.373.28.249.42.577.42.986 0 .409-.14.737-.42.986-.279.249-.607.373-.98.373s-.701-.124-.98-.373c-.28-.249-.42-.577-.42-.986 0-.409.14-.737.42-.986.279-.249.607-.373.98-.373zm8.667 0c.373 0 .701.124.98.373.28.249.42.577.42.986 0 .409-.14.737-.42.986-.279.249-.607.373-.98.373s-.701-.124-.98-.373c-.28-.249-.42-.577-.42-.986 0-.409.14-.737.42-.986.279-.249.607-.373.98-.373z"/></svg>
+          </a>
+          <!-- Xiaohongshu -->
+          <a href="https://www.xiaohongshu.com/user/profile/5dc10acf000000000100252c" target="_blank" rel="noopener" title="小红书">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.524 3.67 1.438 5.168L2.586 22l5.168-1.438A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+          </a>
+          <!-- Douyin -->
+          <a href="https://v.douyin.com/bgCgX9DjR2I" target="_blank" rel="noopener" title="抖音">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.3-3.65-5.63-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-2.64-.02-5.28-.01-6.92z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="hero-avatar-wrap">
+        <img class="hero-avatar" src="photo.jpg" alt="Hanxang Chen">
+      </div>
+    </div>
+  </header>
+
+  <!-- BACKGROUND SECTION -->
+  <section id="exp">
+    <div class="container">
+      <h2 class="bg-section-title fade-up">Experience</h2>
+
+      <!-- Tab Navigation -->
+      <div class="bg-tabs fade-up">
+        <button class="bg-tab active" data-tab="experience">Experience</button>
+        <button class="bg-tab" data-tab="education">Education</button>
+        <button class="bg-tab" data-tab="extracurricular">Extracurricular</button>
+      </div>
+
+      <!-- Experience Panel -->
+      <div class="bg-tab-panel active" id="experience">
+        <div class="bg-grid">
+
+          <div class="bg-card fade-up">
+            <div class="bg-card-top">
+              <a href="https://www.meituan.com/en-US/about-us" target="_blank" rel="noopener">
+                <img class="bg-card-logo" src="/Users/luuta/Desktop/personal website/meituan.png" alt="Meituan">
+              </a>
+              <div class="bg-card-info">
+                <div class="bg-card-title">Product Manager Intern</div>
+                <div class="bg-card-subtitle">Meituan — CLC</div>
+                <div class="bg-card-meta">
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Dec 2025 — Mar 2026
+                  </span>
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Shanghai, China
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-card-desc">
+              <ul>
+                <li>Led C-end visual outreach for member "exclusive pricing," including competitor research on Douyin and Pinduoduo. Optimized member identity display across search, product detail, and checkout pages, driving a daily increase of <strong>300K</strong> organic UVs and lifting conversion rates by <strong>1.3pp</strong></li>
+                <li>Built social gifting capabilities ("gift coupon") for the leisure category, redesigning the sharing flow and status logic. This generated <strong>1,700+</strong> new users daily and <strong>11,000</strong> gift orders, with new users accounting for <strong>10.26%</strong></li>
+                <li>Designed the Spring Festival campaign page, owning UI/component interactions and multi-end seasonal theming rules. CTR increased <strong>20.12%</strong> YoY, supporting a <strong>21.36%</strong> rise in transaction volume</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-card fade-up">
+            <div class="bg-card-top">
+              <a href="https://www.poizon.com/about-us?from=nav" target="_blank" rel="noopener">
+                <img class="bg-card-logo" src="/Users/luuta/Desktop/personal website/dewu.png" alt="Poizon">
+              </a>
+              <div class="bg-card-info">
+                <div class="bg-card-title">Product Manager Intern</div>
+                <div class="bg-card-subtitle">Poizon — POIZON Global</div>
+                <div class="bg-card-meta">
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Aug 2025 — Nov 2025
+                  </span>
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Shanghai, China
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-card-desc">
+              <ul>
+                <li>Synced domestic authentication capabilities to the international App, completing <strong>7</strong> non-standard categories, <strong>76</strong> secondary categories, and <strong>2,600+</strong> brands on international shelves, optimizing key interaction nodes like photo guidance and category navigation</li>
+                <li>Launched the "Share & Earn" growth campaign, defining the US sharing path and expanding to RU/KR regions. Organic traffic share rose from <strong>9.8%</strong> to <strong>28.24%</strong>, saving over <strong>1M RMB</strong> monthly in acquisition costs</li>
+                <li>Maintained core metrics monitoring for international authentication services, leveraging SQL for user behavior analysis. Push delivery success rate improved to <strong>92%</strong></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-card fade-up">
+            <div class="bg-card-top">
+              <a href="https://www.wppmedia.com/company-info" target="_blank" rel="noopener">
+                <img class="bg-card-logo" src="/Users/luuta/Desktop/personal website/groupm.png" alt="GroupM">
+              </a>
+              <div class="bg-card-info">
+                <div class="bg-card-title">Tactical Planner Intern</div>
+                <div class="bg-card-subtitle">GroupM（Now WPP Media） — Wavemaker</div>
+                <div class="bg-card-meta">
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Nov 2023 — Feb 2024
+                  </span>
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Shanghai, China
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-card-desc">
+              <ul>
+                <li>Analyzed advertising strategies for luxury brands (Swatch Group, Hermès) by collecting 200+ cross-platform data points monthly, delivering competitive intelligence reports for client budget allocations</li>
+                <li>Established standardized evaluation frameworks using Miaozhen Systems for "Red" clients, maintaining anomaly rates ≤ 5% to ensure data-driven reporting accuracy</li>
+                <li>Monitored performance-based ads across Douyin and Dongchedi for automotive and luxury sectors, optimizing placement tactics to achieve a 15% average increase in CTR</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Education Panel -->
+      <div class="bg-tab-panel" id="education">
+        <div class="bg-grid">
+
+          <div class="bg-card fade-up">
+            <div class="bg-card-top">
+              <img class="bg-card-logo" src="NJUST.png" alt="Nanjing University of Science and Technology">
+              <div class="bg-card-info">
+                <div class="bg-card-title">Master of Industrial Design Engineering</div>
+                <div class="bg-card-subtitle">Nanjing University of Science and Technology (211 Project)</div>
+                <div class="bg-card-meta">
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Sept 2024 — Now
+                  </span>
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Nanjing, China
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-card-desc">
+              <p>Specialized in Interaction Design. Achieved a GPA of <strong>3.59/4.0</strong>, ranking in the top <strong>10%</strong> of the program. Focused on user experience research and human-computer interaction within industrial systems.</p>
+            </div>
+          </div>
+
+          <div class="bg-card fade-up">
+            <div class="bg-card-top">
+              <img class="bg-card-logo" src="NJUST.png" alt="Nanjing University of Science and Technology">
+              <div class="bg-card-info">
+                <div class="bg-card-title">Bachelor of Visual Communication Design</div>
+                <div class="bg-card-subtitle">Nanjing University of Science and Technology (211 Project)</div>
+                <div class="bg-card-meta">
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Sept 2020 — June 2024
+                  </span>
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Nanjing, China
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-card-desc">
+              <p>Specialized in Interaction Design. Achieved a GPA of <strong>3.76/4.0</strong>, ranking in the top <strong>2%</strong> of the class. Developed a strong foundation in visual hierarchy, digital media, and user-centric design methodologies.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Honors & Awards Timeline -->
+        <div class="bg-honors-title">Honors & Awards</div>
+        <div class="bg-grid">
+
+          <div class="bg-card fade-up">
+            <div class="bg-card-top">
+              <div class="bg-card-logo trophy-logo">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 21H16M12 17V21M7 4H17V8C17 11.3137 14.7614 14 12 14C9.23858 14 7 11.3137 7 8V4Z" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M7 4H4V6C4 7.65685 5.34315 9 7 9" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M17 4H20V6C20 7.65685 18.6569 9 17 9" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 14V17" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M9 21H15" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="bg-card-info">
+                <div class="bg-card-title">China International College Students' Innovation Competition</div>
+                <div class="bg-card-subtitle">Industrial Track — Province Level</div>
+                <div class="bg-card-meta">
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    2025.8
+                  </span>
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21H16M12 17V21M7 4H17V8C17 11.3137 14.7614 14 12 14C9.23858 14 7 11.3137 7 8V4Z"/><path d="M7 4H4V6C4 7.65685 5.34315 9 7 9"/><path d="M17 4H20V6C20 7.65685 18.6569 9 17 9"/><path d="M12 14V17"/><path d="M9 21H15"/></svg>
+                    <span class="prize-item">First Prize</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-card fade-up">
+            <div class="bg-card-top">
+              <div class="bg-card-logo trophy-logo">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 21H16M12 17V21M7 4H17V8C17 11.3137 14.7614 14 12 14C9.23858 14 7 11.3137 7 8V4Z" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M7 4H4V6C4 7.65685 5.34315 9 7 9" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M17 4H20V6C20 7.65685 18.6569 9 17 9" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 14V17" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M9 21H15" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="bg-card-info">
+                <div class="bg-card-title">The 19th China Creative Challenges Contest</div>
+                <div class="bg-card-subtitle">Innovative Product Category — Province Level</div>
+                <div class="bg-card-meta">
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    2025.8
+                  </span>
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21H16M12 17V21M7 4H17V8C17 11.3137 14.7614 14 12 14C9.23858 14 7 11.3137 7 8V4Z"/><path d="M7 4H4V6C4 7.65685 5.34315 9 7 9"/><path d="M17 4H20V6C20 7.65685 18.6569 9 17 9"/><path d="M12 14V17"/><path d="M9 21H15"/></svg>
+                    <span class="prize-item">First Prize</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-card fade-up">
+            <div class="bg-card-top">
+              <div class="bg-card-logo trophy-logo">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 21H16M12 17V21M7 4H17V8C17 11.3137 14.7614 14 12 14C9.23858 14 7 11.3137 7 8V4Z" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M7 4H4V6C4 7.65685 5.34315 9 7 9" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M17 4H20V6C20 7.65685 18.6569 9 17 9" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 14V17" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M9 21H15" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="bg-card-info">
+                <div class="bg-card-title">The 11th NCDA AWARDS</div>
+                <div class="bg-card-subtitle">Interaction Design Category — Province Level</div>
+                <div class="bg-card-meta">
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    2023.8
+                  </span>
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21H16M12 17V21M7 4H17V8C17 11.3137 14.7614 14 12 14C9.23858 14 7 11.3137 7 8V4Z"/><path d="M7 4H4V6C4 7.65685 5.34315 9 7 9"/><path d="M17 4H20V6C20 7.65685 18.6569 9 17 9"/><path d="M12 14V17"/><path d="M9 21H15"/></svg>
+                    <span class="prize-item">First Prize</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-card fade-up">
+            <div class="bg-card-top">
+              <div class="bg-card-logo trophy-logo">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 21H16M12 17V21M7 4H17V8C17 11.3137 14.7614 14 12 14C9.23858 14 7 11.3137 7 8V4Z" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M7 4H4V6C4 7.65685 5.34315 9 7 9" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M17 4H20V6C20 7.65685 18.6569 9 17 9" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 14V17" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M9 21H15" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="bg-card-info">
+                <div class="bg-card-title">The 11th NCDA AWARDS</div>
+                <div class="bg-card-subtitle">Visual Communication Design Category — Province Level</div>
+                <div class="bg-card-meta">
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    2023.8
+                  </span>
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21H16M12 17V21M7 4H17V8C17 11.3137 14.7614 14 12 14C9.23858 14 7 11.3137 7 8V4Z"/><path d="M7 4H4V6C4 7.65685 5.34315 9 7 9"/><path d="M17 4H20V6C20 7.65685 18.6569 9 17 9"/><path d="M12 14V17"/><path d="M9 21H15"/></svg>
+                    <span class="prize-item">Third Prize</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-card fade-up">
+            <div class="bg-card-top">
+              <div class="bg-card-logo trophy-logo">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 21H16M12 17V21M7 4H17V8C17 11.3137 14.7614 14 12 14C9.23858 14 7 11.3137 7 8V4Z" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M7 4H4V6C4 7.65685 5.34315 9 7 9" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M17 4H20V6C20 7.65685 18.6569 9 17 9" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 14V17" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M9 21H15" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="bg-card-info">
+                <div class="bg-card-title">The 14th National Advertising Art Design Competition</div>
+                <div class="bg-card-subtitle">Kwai Thematic Track — Province Level</div>
+                <div class="bg-card-meta">
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    2022.8
+                  </span>
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21H16M12 17V21M7 4H17V8C17 11.3137 14.7614 14 12 14C9.23858 14 7 11.3137 7 8V4Z"/><path d="M7 4H4V6C4 7.65685 5.34315 9 7 9"/><path d="M17 4H20V6C20 7.65685 18.6569 9 17 9"/><path d="M12 14V17"/><path d="M9 21H15"/></svg>
+                    <span class="prize-item">Third Prize</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-card fade-up">
+            <div class="bg-card-top">
+              <div class="bg-card-logo trophy-logo">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 21H16M12 17V21M7 4H17V8C17 11.3137 14.7614 14 12 14C9.23858 14 7 11.3137 7 8V4Z" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M7 4H4V6C4 7.65685 5.34315 9 7 9" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M17 4H20V6C20 7.65685 18.6569 9 17 9" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 14V17" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M9 21H15" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="bg-card-info">
+                <div class="bg-card-title">HPAD Award</div>
+                <div class="bg-card-subtitle">Global Recognition</div>
+                <div class="bg-card-meta">
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    2022.3
+                  </span>
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#E8839A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21H16M12 17V21M7 4H17V8C17 11.3137 14.7614 14 12 14C9.23858 14 7 11.3137 7 8V4Z"/><path d="M7 4H4V6C4 7.65685 5.34315 9 7 9"/><path d="M17 4H20V6C20 7.65685 18.6569 9 17 9"/><path d="M12 14V17"/><path d="M9 21H15"/></svg>
+                    <span class="prize-item">Bronze Award</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Extracurricular Panel -->
+      <div class="bg-tab-panel" id="extracurricular">
+        <div class="bg-grid">
+
+          <div class="bg-card fade-up">
+            <div class="bg-card-top">
+              <img class="bg-card-logo" src="NJUST.png" alt="University">
+              <div class="bg-card-info">
+                <div class="bg-card-title">Student Administrative Assistant</div>
+                <div class="bg-card-subtitle">Department of Art & Cultural Quality Education — University Level</div>
+                <div class="bg-card-meta">
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Mar 2025 — July 2025
+                  </span>
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Nanjing, China
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-card-desc">
+              <ul>
+                <li>Digital Content Management: Managed <a href="https://yww.njust.edu.cn/" target="_blank" rel="noopener">the official university website</a> and WeChat official account, utilizing H5 editors to create engaging multimedia content.</li>
+                <li>Event Planning: Orchestrated the curation and logistical planning of on-campus art exhibitions, enhancing the cultural atmosphere for students and faculty.</li>
+                <li>Resource Coordination: Conducted comprehensive audits of department assets and inventory, ensuring streamlined operations and administrative efficiency.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-card fade-up">
+            <div class="bg-card-top">
+              <img class="bg-card-logo" src="design .png" alt="College">
+              <div class="bg-card-info">
+                <div class="bg-card-title">Vice Director of Activity Department</div>
+                <div class="bg-card-subtitle">Student Union — College Level</div>
+                <div class="bg-card-meta">
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Sept 2020 — July 2022
+                  </span>
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Nanjing, China
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-card-desc">
+              <ul>
+                <li>Event Leadership: Led the end-to-end planning and execution of large-scale events, including the Freshman Orientation Gala and the Annual College Sports Meet.</li>
+                <li>Public Relations: Spearheaded the drafting and distribution of official press releases, ensuring consistent branding and high visibility for college initiatives.</li>
+                <li>Team Coordination: Managed cross-functional student teams to deliver complex projects on tight schedules, fostering a collaborative and high-energy environment.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-card fade-up">
+            <div class="bg-card-top">
+              <img class="bg-card-logo" src="NJUST.png" alt="University">
+              <div class="bg-card-info">
+                <div class="bg-card-title">Social Media Strategist & Planner</div>
+                <div class="bg-card-subtitle">New Media Center, Publicity Department — University Level</div>
+                <div class="bg-card-meta">
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Sept 2020 — July 2021
+                  </span>
+                  <span class="bg-card-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Nanjing, China
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-card-desc">
+              <ul>
+                <li>Platform Operations: Directed the daily content strategy and operations for <a href="https://weibo.com/inust" target="_blank" rel="noopener">the official university Weibo account</a>, focusing on community growth.</li>
+                <li>Content Virality: Produced multiple high-impact digital campaigns, successfully trending on the local "Hot Search" rankings three times during the tenure.</li>
+                <li>Trend Analysis: Leveraged social media analytics to optimize post timing and engagement, significantly increasing the university's digital footprint and brand reach.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECT (Self-media) -->
+  <section id="pro">
+    <div class="pro-sidebar">
+      <button class="pro-sidebar-btn active" data-target="pro-1" title="Anime channel">
+        <img src="/Users/luuta/Desktop/personal website/bilibili.png" alt="Anime channel">
+      </button>
+      <button class="pro-sidebar-btn" data-target="pro-2" title="Meituan">
+        <img src="/Users/luuta/Desktop/personal website/meituan.png" alt="Meituan">
+      </button>
+      <button class="pro-sidebar-btn" data-target="pro-3" title="Poizon">
+        <img src="/Users/luuta/Desktop/personal website/poizon.png" alt="Poizon">
+      </button>
+    </div>
+    <div class="container">
+      <h2 class="section-title fade-up">Projects</h2>
+      <div class="project-card fade-up" id="pro-1">
+        <div class="pc-image-wrapper">
+          <a href="https://space.bilibili.com/1942011?spm_id_from=333.1007.0.0" target="_blank" rel="noopener">
+            <img class="pc-image" src="bilibiliweb.png" alt="Anime Influencer Platform">
+            <div class="pc-overlay">
+              <span class="pc-overlay-btn">View My Channel</span>
+            </div>
+          </a>
+        </div>
+        <div class="pc-body">
+          <div class="pc-header">
+            <span class="pc-name pc-name-bilibili">Anime channel</span>
+          </div>
+          <div class="pc-desc" style="font-size: 1rem; line-height: 1.85;">
+            A channel dedicated to Usagi fanatics! We curate every single anime appearance and all those iconic squeals. We also regularly feature top-tier content from Niconico and YouTube.
+          </div>
+          <div class="pc-tags">
+            <span class="pc-pill">Bilibili</span>
+            <span class="pc-pill">Anime</span>
+            <button class="pc-expand-btn" onclick="toggleAchievement(this)">
+              View My Achievements
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pc-achievement" id="achievement-1">
+        <div class="achievement-card">
+          <div class="achievement-grid">
+            <div class="achievement-item">
+              <img src="/Users/luuta/Desktop/personal website/20231004.jpg" alt="Achievement 1">
+            </div>
+            <div class="achievement-item">
+              <img src="/Users/luuta/Desktop/personal website/20231229.jpg" alt="Achievement 2">
+            </div>
+            <div class="achievement-item">
+              <img src="/Users/luuta/Desktop/personal website/20240112.jpg" alt="Achievement 3">
+            </div>
+            <div class="achievement-item">
+              <img src="/Users/luuta/Desktop/personal website/20240131-2.jpg" alt="Achievement 4">
+            </div>
+            <div class="achievement-item">
+              <img src="/Users/luuta/Desktop/personal website/20240131.jpg" alt="Achievement 5">
+            </div>
+            <div class="achievement-item">
+              <img src="/Users/luuta/Desktop/personal website/20240810.jpg" alt="Achievement 6">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card fade-up" id="pro-2">
+        <div class="pc-image-wrapper">
+          <a href="https://www.meituan.com/" target="_blank" rel="noopener">
+            <img class="pc-image" src="/Users/luuta/Desktop/personal website/meituanprogram.png" alt="Meituan Program">
+            <div class="pc-overlay">
+              <span class="pc-overlay-btn">Download Meituan app</span>
+            </div>
+          </a>
+        </div>
+        <div class="pc-body">
+          <div class="pc-header">
+            <span class="pc-name pc-name-meituan">Optimization of the Transaction Flow for App Channel</span>
+          </div>
+          <div class="pc-desc" style="font-size: 1rem; line-height: 1.85;">
+            Optimizing the end-to-end transaction journey within the Leisure & Entertainment channel, leveraging integrated marketing strategies to drive user growth.
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card fade-up" id="pro-3">
+        <div class="pc-image-wrapper">
+          <a href="https://www.poizon.com/authentication/home" target="_blank" rel="noopener">
+            <img class="pc-image" src="/Users/luuta/Desktop/personal website/dewuprogram.png" alt="Poizon Program">
+            <div class="pc-overlay">
+              <span class="pc-overlay-btn">Download Poizon app</span>
+            </div>
+          </a>
+        </div>
+        <div class="pc-body">
+          <div class="pc-header">
+            <span class="pc-name pc-name-poizon">Optimization of the Authentication & Sharing Flow</span>
+          </div>
+          <div class="pc-desc" style="font-size: 1rem; line-height: 1.85;">
+            Driving user acquisition through viral mechanics by optimizing the sharing journey and implementing upfront incentive visibility to maximize conversion.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title fade-up">Skills</h2>
+
+      <div class="skills-group fade-up">
+        <div class="skills-group-label">Product Skills</div>
+        <div class="skills-grid">
+          <span class="skill-tag">User Research</span>
+          <span class="skill-tag">User Growth</span>
+          <span class="skill-tag">Interaction Design</span>
+          <span class="skill-tag">Data Analysis</span>
+          <span class="skill-tag">PRD Writing</span>
+          <span class="skill-tag">Competitive Analysis</span>
+        </div>
+      </div>
+
+      <div class="skills-group fade-up">
+        <div class="skills-group-label">Languages</div>
+        <div class="skills-grid">
+          <span class="skill-tag">IELTS 6.0 (R: 6.5)</span>
+          <span class="skill-tag">CET-6 (553 pts)</span>
+        </div>
+      </div>
+
+      <div class="skills-group fade-up">
+        <div class="skills-group-label">Tools Skills</div>
+        <div class="skills-grid skills-logo-grid">
+          <span class="skill-logo" title="Xmind">
+            <img src="Sk.png" alt="Xmind">
+          </span>
+          <span class="skill-logo" title="Figma">
+            <img src="Fg.png" alt="Figma">
+          </span>
+          <span class="skill-logo" title="Illustrator">
+            <img src="Ai.png" alt="Illustrator">
+          </span>
+          <span class="skill-logo" title="Photoshop">
+            <img src="Ps.png" alt="Photoshop">
+          </span>
+          <span class="skill-logo" title="InDesign">
+            <img src="Id.png" alt="InDesign">
+          </span>
+          <span class="skill-logo" title="SQL">
+            <img src="SQL.png" alt="SQL">
+          </span>
+          <span class="skill-logo" title="Excel">
+            <img src="Excel.png" alt="Excel">
+          </span>
+        </div>
+      </div>
+
+      <div class="skills-group fade-up">
+        <div class="skills-group-label">AI Skills</div>
+        <div class="skills-grid skills-logo-grid">
+          <span class="skill-logo" title="Claude">
+            <img src="CC.png" alt="Claude">
+          </span>
+          <span class="skill-logo" title="Gemini">
+            <img src="Gemini.png" alt="Gemini">
+          </span>
+          <span class="skill-logo" title="GPT">
+            <img src="GPT.png" alt="GPT">
+          </span>
+          <span class="skill-logo" title="Midjourney">
+            <img src="MJ.png" alt="Midjourney">
+          </span>
+          <span class="skill-logo" title="Stable Diffusion">
+            <img src="SD.png" alt="Stable Diffusion">
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <h2 class="section-title fade-up">Contact</h2>
+      <div class="contact-card fade-up">
+        <p class="contact-sub">Email me at:</p>
+        <div class="contact-emails">
+          <a href="mailto:irischenchx@gmail.com" class="contact-email">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7L12 13 2 7"/></svg>
+            irischenchx@gmail.com
+          </a>
+          <a href="mailto:2015981774@qq.com" class="contact-email">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7L12 13 2 7"/></svg>
+            2015981774@qq.com
+          </a>
+        </div>
+        <div class="contact-socials">
+          <a href="https://space.bilibili.com/1942011" target="_blank" rel="noopener" title="哔哩哔哩">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.83.83 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .701.124.98.373.28.249.42.577.42.986 0 .409-.14.737-.42.986-.279.249-.607.373-.98.373s-.701-.124-.98-.373c-.28-.249-.42-.577-.42-.986 0-.409.14-.737.42-.986.279-.249.607-.373.98-.373zm8.667 0c.373 0 .701.124.98.373.28.249.42.577.42.986 0 .409-.14.737-.42.986-.279.249-.607.373-.98.373s-.701-.124-.98-.373c-.28-.249-.42-.577-.42-.986 0-.409.14-.737.42-.986.279-.249.607-.373.98-.373z"/></svg>
+          </a>
+          <a href="https://www.xiaohongshu.com/user/profile/5dc10acf000000000100252c" target="_blank" rel="noopener" title="小红书">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.524 3.67 1.438 5.168L2.586 22l5.168-1.438A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+          </a>
+          <a href="https://v.douyin.com/bgCgX9DjR2I" target="_blank" rel="noopener" title="抖音">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.3-3.65-5.63-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-2.64-.02-5.28-.01-6.92z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Iris Chen. Built with simplicity.</p>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" title="Back to top">
+    <img src="/Users/luuta/Desktop/personal website/usagi.gif" alt="Back to top">
+  </button>
+
+  <script>
+    // ── Background Tab Switching ──────────────────────────────
+    const bgTabs = document.querySelectorAll('.bg-tab');
+    const bgPanels = document.querySelectorAll('.bg-tab-panel');
+
+    bgTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.tab;
+
+        bgTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        bgPanels.forEach(panel => {
+          panel.classList.remove('active');
+          if (panel.id === target) {
+            panel.classList.add('active');
+            // Re-trigger fade-up animations
+            panel.querySelectorAll('.fade-up').forEach(el => {
+              el.classList.remove('visible');
+              setTimeout(() => observer.observe(el), 50);
+            });
+          }
+        });
+      });
+    });
+
+    // ── Scroll Animations ─────────────────────────────────────
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    document.querySelectorAll('.fade-up').forEach((el) => {
+      observer.observe(el);
+    });
+
+    // ── Liquid Glass scroll interaction ──────────────────────
+    const capsule = document.querySelector('.nav-capsule');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    function updateActiveLink() {
+      const sections = ['home', 'exp', 'pro', 'skills', 'contact'];
+      const scrollY = window.scrollY + window.innerHeight / 3;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i]);
+        if (el && el.offsetTop <= scrollY) {
+          navLinks.forEach(a => a.classList.remove('active'));
+          const activeLink = document.querySelector(`.nav-links a[href="#${sections[i]}"]`);
+          if (activeLink) activeLink.classList.add('active');
+          return;
+        }
+      }
+    }
+
+    function toggleAchievement(btn) {
+      const projectCard = btn.closest('.project-card');
+      const achievement = document.getElementById('achievement-1');
+      btn.classList.toggle('active');
+      if (achievement) {
+        achievement.classList.toggle('show');
+      }
+    }
+
+    // ── Projects Sidebar Scroll Spy ─────────────────────
+    const proSidebar = document.querySelector('.pro-sidebar');
+    const proBtns = document.querySelectorAll('.pro-sidebar-btn');
+    const projectIds = ['pro-1', 'pro-2', 'pro-3'];
+    let isScrollingFromClick = false;
+
+    proBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        // Set this button as active immediately
+        proBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Then scroll to the target - center it in the viewport
+        const target = document.getElementById(btn.dataset.target);
+        if (target) {
+          isScrollingFromClick = true;
+          const targetRect = target.getBoundingClientRect();
+          const scrollTop = window.scrollY + targetRect.top - (window.innerHeight / 2) + (targetRect.height / 2);
+          window.scrollTo({
+            top: scrollTop,
+            behavior: 'smooth'
+          });
+
+          // Reset the flag after scroll animation completes
+          setTimeout(() => {
+            isScrollingFromClick = false;
+          }, 600);
+        }
+      });
+    });
+
+    function updateProSidebar() {
+      const proSection = document.getElementById('pro');
+      const proRect = proSection.getBoundingClientRect();
+      const skillsSection = document.getElementById('skills');
+      const skillsRect = skillsSection.getBoundingClientRect();
+
+      // Show sidebar when Projects section is well into view and hide before reaching Skills
+      const projectsInView = proRect.top < window.innerHeight * 0.4 && proRect.bottom > 0;
+      const nearSkills = skillsRect.top < window.innerHeight * 0.6;
+
+      if (projectsInView && !nearSkills) {
+        proSidebar.classList.add('visible');
+      } else {
+        proSidebar.classList.remove('visible');
+        return;
+      }
+
+      // Only update active based on scroll if not scrolling from click
+      if (!isScrollingFromClick) {
+        let activeIndex = 0;
+        projectIds.forEach((id, index) => {
+          const el = document.getElementById(id);
+          if (el) {
+            const elRect = el.getBoundingClientRect();
+            // Use center of viewport as threshold
+            const viewportCenter = window.innerHeight / 2;
+            if (elRect.top < viewportCenter) {
+              activeIndex = index;
+            }
+          }
+        });
+
+        proBtns.forEach((btn, index) => {
+          btn.classList.toggle('active', index === activeIndex);
+        });
+      }
+    }
+
+    // ── Back to Top Button ─────────────────────────────
+    const backToTopBtn = document.getElementById('backToTop');
+    let isDragging = false;
+    let dragOffsetX, dragOffsetY;
+
+    backToTopBtn.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      const rect = backToTopBtn.getBoundingClientRect();
+      dragOffsetX = e.clientX - rect.left;
+      dragOffsetY = e.clientY - rect.top;
+      backToTopBtn.style.transition = 'none';
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.clientX - dragOffsetX;
+      const y = e.clientY - dragOffsetY;
+      backToTopBtn.style.left = x + 'px';
+      backToTopBtn.style.top = y + 'px';
+      backToTopBtn.style.right = 'auto';
+      backToTopBtn.style.bottom = 'auto';
+    });
+
+    document.addEventListener('mouseup', () => {
+      if (isDragging) {
+        isDragging = false;
+        backToTopBtn.style.transition = 'opacity 0.4s ease, visibility 0.4s ease';
+      }
+    });
+
+    // Touch support for mobile
+    backToTopBtn.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      const touch = e.touches[0];
+      const rect = backToTopBtn.getBoundingClientRect();
+      dragOffsetX = touch.clientX - rect.left;
+      dragOffsetY = touch.clientY - rect.top;
+      backToTopBtn.style.transition = 'none';
+    });
+
+    document.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      const touch = e.touches[0];
+      const x = touch.clientX - dragOffsetX;
+      const y = touch.clientY - dragOffsetY;
+      backToTopBtn.style.left = x + 'px';
+      backToTopBtn.style.top = y + 'px';
+      backToTopBtn.style.right = 'auto';
+      backToTopBtn.style.bottom = 'auto';
+    });
+
+    document.addEventListener('touchend', () => {
+      if (isDragging) {
+        isDragging = false;
+        backToTopBtn.style.transition = 'opacity 0.4s ease, visibility 0.4s ease';
+      }
+    });
+
+    backToTopBtn.addEventListener('click', (e) => {
+      // Only scroll if not dragging
+      if (!isDragging) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+
+    function onScroll() {
+      const scrollY = window.scrollY;
+      const bgOpacity = Math.min(0.95, 0.85 + scrollY * 0.0005);
+      const blur = Math.min(24, 16 + scrollY * 0.015);
+      const shadow = Math.min(0.12, 0.06 + scrollY * 0.0001);
+
+      capsule.style.background = `rgba(255, 255, 255, ${bgOpacity})`;
+      capsule.style.backdropFilter = `blur(${blur}px) saturate(180%)`;
+      capsule.style.webkitBackdropFilter = `blur(${blur}px) saturate(180%)`;
+      capsule.style.boxShadow = `
+        0 ${4 + scrollY * 0.01}px ${20 + scrollY * 0.02}px rgba(180, 100, 120, ${shadow}),
+        0 1px 4px rgba(180, 100, 120, 0.04)
+      `;
+
+      updateActiveLink();
+      updateProSidebar();
+
+      // Back to top button visibility - show when past Projects section
+      const proSection = document.getElementById('pro');
+      if (proSection) {
+        const proRect = proSection.getBoundingClientRect();
+        if (proRect.top < 0) {
+          backToTopBtn.classList.add('show');
+        } else {
+          backToTopBtn.classList.remove('show');
+        }
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  </script>
+
+</body>
+</html>
